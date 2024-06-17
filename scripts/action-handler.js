@@ -1409,21 +1409,19 @@ Hooks.once('tokenActionHudCoreApiReady', async (coreModule) => {
                     }
                 }
             } else {
-                const target = this.items.get(consumeId)
+                const target = this.actor.items?.get(consumeId)
 
-                if (target) {
-                    // Return charges
-                    if (consumeType === 'charges') {
-                        return this.#getUsesData(target, target.name, consumeAmount)
-                    }
+                // Return charges
+                if (target && consumeType === 'charges') {
+                    return this.#getUsesData(target, target.name, consumeAmount)
+                }
 
-                    // Return quantity
-                    if (target?.system?.quantity) {
-                        const text = `${consumeAmount > 1 ? `${consumeAmount} ${coreModule.api.Utils.i18n('DND5E.of')} ` : ''}${target.system.quantity}`
-                        return {
-                            text,
-                            title: `${text} ${target.name}`
-                        }
+                // Return quantity
+                if (target?.system?.quantity) {
+                    const text = `${consumeAmount > 1 ? `${consumeAmount} ${coreModule.api.Utils.i18n('DND5E.of')} ` : ''}${target.system.quantity}`
+                    return {
+                        text,
+                        title: `${text} ${target.name}`
                     }
                 }
             }
