@@ -14,9 +14,9 @@
       "name": "^ and stick"
     }
   ],
-  "url": "This is auto replaced",
+  "url": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e",
   "flags": {},
-  "version": "This is auto replaced",
+  "version": "1.5.8+iws",
   "compatibility": {
     "minimum": "11",
     "verified": "12.325"
@@ -115,8 +115,8 @@
     }
   },
   "socket": false,
-  "manifest": "This is auto replaced",
-  "download": "This is auto replaced",
+  "manifest": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e/releases/latest/download/module.json",
+  "download": "https://github.com/morepurplemorebetter/fvtt-token-action-hud-dnd5e/releases/download/v1.5.8+iws/module.zip",
   "readme": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e#readme",
   "protected": false,
   "coreTranslation": false,
