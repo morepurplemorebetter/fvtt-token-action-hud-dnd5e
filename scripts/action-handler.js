@@ -911,13 +911,16 @@ Hooks.once('tokenActionHudCoreApiReady', async (coreModule) => {
 
             const spellsMap = new Map()
 
+            const IwsApi = game.modules.get('items-with-spells-5e')?.api
+
             // Loop through items
             for (const [key, value] of this.items) {
                 const type = value.type
                 if (type === 'spell') {
+                    const isIwsSpell = IwsApi?.isIwsSpell(value)
                     const isUsableItem = this.#isUsableItem(value)
                     const isUsableSpell = this.#isUsableSpell(value)
-                    if (isUsableItem && isUsableSpell) {
+                    if (!isIwsSpell && isUsableItem && isUsableSpell) {
                         const preparationMode = value.system.preparation.mode
                         switch (preparationMode) {
                         case 'atwill':
@@ -1485,7 +1488,8 @@ Hooks.once('tokenActionHudCoreApiReady', async (coreModule) => {
          */
         #getConcentrationIcon (spell) {
             if (spell?.type !== 'spell' || !this.displaySpellInfo || !spell.system?.properties?.has('concentration')) return null
-            const title = coreModule.api.Utils.i18n('DND5E.Scroll.RequiresConcentration')
+            const Dnd5eV3_2 = foundry.utils.isNewerVersion(game.system.version, "3.1.99")
+            const title = coreModule.api.Utils.i18n(`DND5E.Scroll${Dnd5eV3_2 ? '.' : ''}RequiresConcentration`)
             const icon = CONCENTRATION_ICON
             return `<dnd5e-icon src="${icon}" title="${title}">`
         }
