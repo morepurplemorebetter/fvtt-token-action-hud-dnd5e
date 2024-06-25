@@ -16,7 +16,7 @@
   ],
   "url": "https://github.com/Larkinabout/fvtt-token-action-hud-dnd5e",
   "flags": {},
-  "version": "1.5.8+iws.2",
+  "version": "1.5.8+iws.1",
   "compatibility": {
     "minimum": "11",
     "verified": "12.325"
